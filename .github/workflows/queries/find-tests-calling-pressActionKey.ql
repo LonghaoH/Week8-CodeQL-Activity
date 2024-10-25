@@ -8,12 +8,10 @@
 
 import javascript
 
-from Function test, Function pressActionKey, CallExpr call
+from Function test, CallExpr call
 where 
-  // Identify the pressActionKey function
-  pressActionKey.getName() = "pressActionKey" and
   // Find calls to pressActionKey
-  call.getCallee() = pressActionKey.getAReference() and
+  call.getCalleeName() = "pressActionKey" and
   // Ensure the call is within a test function (assuming test files contain "test" or "spec")
   test.getFile().getBaseName().matches("%test%.js") and
   call.getEnclosingFunction() = test
